@@ -1,0 +1,84 @@
+ul {
+    list-style: none; 
+    padding: 0; 
+  }
+  li {
+    display: flex; 
+    align-items: center; 
+  justify-content: space-between; 
+  background: #ffffff; 
+   margin: 10px 0; 
+    padding: 15px; 
+   border-radius: 5px; 
+   border: 1px solid rgb(202, 194, 194);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s; 
+  }
+  
+  li:hover {
+    background-color: #f9f9f9; 
+  }
+  
+  li.task.completed {
+    background-color: #d4edda; 
+  }
+  .task-text.completed {
+    text-decoration: line-through; 
+    color: gray; 
+  }
+  
+  .task_btn {
+    background: #e08888;
+    border: none; 
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px; 
+    cursor: pointer; 
+  }
+  
+  .task_btn:hover {
+    background: #863a3a;
+  }
+  .filter{
+    display: flex;
+   text-align: left;
+   margin: 10px;
+  gap: 10px;
+  }
+  .task_new{
+  width: 85%;
+  border: none;
+    padding: 15px;
+    margin: 10px 0;
+   
+  }
+  
+  .task-add{
+    display: flex;
+    padding: 0 10px;
+    border-radius:5px ;
+    justify-content:space-between;
+    align-items: center;
+  }
+  .btn{
+   width: auto;
+   height: 35px;
+   padding: 7px;
+   border: none;
+   cursor:pointer;
+   border-radius: 5px;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   -ms-border-radius: 5px;
+   -o-border-radius: 5px;
+}
+.btn:hover{
+opacity: 0.6;
+}
+  .error-message, .no-tasks-message{
+    color: red;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 10px;
+}
