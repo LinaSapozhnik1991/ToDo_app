@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import TaskInput from './components/TaskInput';
 import TaskList from './components/TaskList';
 import TaskFilter from './components/TaskFilter';
@@ -34,7 +34,7 @@ const App: React.FC = () => {
         setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
     };
 
-    const filteredTasks = () => {
+    const filteredTasks = useMemo(() => {
         let result = tasks;
         switch (filter) {
             case 'completed':
@@ -54,21 +54,19 @@ const App: React.FC = () => {
                 break;
         }
         return result;
-    };
+    }, [tasks, filter, selectedDate]); 
 
-    const visibleTasks = filteredTasks();
+    const visibleTasks = filteredTasks;
 
     return (
         <div className='App'>
             <h1>Список задач</h1>
             <TaskInput addTask={addTask} />
             <TaskFilter setFilter={setFilter} setSelectedDate={setSelectedDate}/>
-            {tasks.length === 0 ? null : ( // Сначала проверяем, есть ли задачи
-                visibleTasks.length === 0 ? (
-                    <div className='no-tasks-message'>Нет задач по текущему фильтру</div>
-                ) : (
-                    <TaskList tasks={visibleTasks} toggleTask={toggleTask} deleteTask={deleteTask} />
-                )
+            {visibleTasks.length === 0 ? (
+                <div className='no-tasks-message'>Нет задач по текущему фильтру</div>
+            ) : (
+                <TaskList tasks={visibleTasks} toggleTask={toggleTask} deleteTask={deleteTask} />
             )}
         </div>
     );
